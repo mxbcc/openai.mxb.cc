@@ -20,6 +20,9 @@ app.use(async ctx => {
         question = ctx.request?.body?.text;
         sessionId = ctx.request?.body?.sessionId;
     }
+
+    console.log('receive message: ', sessionId, question);
+
     try {
         const res = await api.sendMessage(question ?? '介绍自己', {
             conversationId: cache.get(sessionId)?.conversationId,
